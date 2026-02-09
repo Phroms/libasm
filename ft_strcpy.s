@@ -1,5 +1,5 @@
-global .text
-	section ft_strcpy
+global ft_strcpy
+	section .text
 
 	; rdi = dst;
 	; rsi = src;

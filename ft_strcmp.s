@@ -1,12 +1,12 @@
-global .text
-	section ft_strcmp
+global ft_strcmp
+	section .text
 
 ft_strcmp:
 	mov rax, 0
 
 loop:
 	cmp dl, [rax, rdi]
-	cpm dl, 0
+	cmp dl, 0
 	je end
 	inc rax
 	inc rdi

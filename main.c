@@ -4,18 +4,20 @@
 
 size_t	ft_strlen(const char *s); //Declaramos la funcion de assembly
 char	*ft_strcpy(char *dest, const char *src);
-int		strcmp(const char *s1, const char *s2);
+int		ft_strcmp(const char *s1, const char *s2);
 
 int main()
 {
 		printf("\n========== TEST LIBASM ==========\n\n");
 
 	/*======= STRLEN ======*/
-	const char *s = "HOLA";
+	const char *s = "HOLA COMO ESTAS";
+	const char *str = "PAPAYA";
 	printf ("\n------STRLEN------\n");
 	printf ("\nOriginal: %zu\n", strlen(s));
 	printf ("\nft      : %zu\n", ft_strlen(s));
-
+	
+	/*======= STRCPY ======*/
 	printf ("\n------STRCPY------\n");
 	char dst1[100];
 	char dst2[100];
@@ -23,8 +25,20 @@ int main()
 	ft_strcpy(dst1, s);
 	ft_strcpy(dst2, s);
 
-   printf("src     : \"%s\"\n", s);
+	printf("src     : \"%s\"\n", s);
     printf("libc    : \"%s\"\n", dst1);
     printf("ft      : \"%s\"\n\n", dst2);
+
+	/*======= STRCMP ======*/
+	printf ("\n------STRCMP-----\n");
+	
+	ft_strcmp(dst1, s);
+	ft_strcmp(dst2, str);
+
+	//ft_strcmp(dst1, s);
+	//ft_strcmp(dst2, str);
+
+	printf ("s		: \"%s\"\n", s);
+	printf ("s		: \"%s\"\n", s);
 	return 0;
 }
