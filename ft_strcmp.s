@@ -1,16 +1,27 @@
 global ft_strcmp
-	section .text
+    section .text
 
 ft_strcmp:
-	mov rax, 0
+.loop:
+    mov al, [rdi]      
+    mov dl, [rsi]       ; Usamos dl en lugar de bl
 
-loop:
-	cmp dl, [rax, rdi]
-	cmp dl, 0
-	je end
-	inc rax
-	inc rdi
-	jmp loop
+    cmp al, dl
+    jne .diff
 
-end:
-	ret
+    cmp al, 0
+    je .equal
+
+    inc rdi
+    inc rsi
+    jmp .loop
+
+.diff:
+    movzx eax, al
+    movzx edx, dl       ; Usamos edx
+    sub eax, edx        ; Resultado: s1[i] - s2[i]
+    ret
+
+.equal:
+    xor eax, eax
+    ret
