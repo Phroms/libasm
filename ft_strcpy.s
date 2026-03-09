@@ -16,6 +16,6 @@ loop:
 	inc rdi
 
 	cmp dl, 0
-	je loop
+	jne loop
 
 	ret

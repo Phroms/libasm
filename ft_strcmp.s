@@ -2,26 +2,24 @@ global ft_strcmp
     section .text
 
 ft_strcmp:
+    xor rax, rax         ; clear rax (will hold return value)
+    xor rcx, rcx         ; i = 0
+
 .loop:
-    mov al, [rdi]      
-    mov dl, [rsi]       ; Usamos dl en lugar de bl
-
-    cmp al, dl
-    jne .diff
-
-    cmp al, 0
-    je .equal
-
-    inc rdi
-    inc rsi
+    mov al, [rdi + rcx]  ; al = s1[i]
+    mov bl, [rsi + rcx]  ; bl = s2[i]
+    cmp al, bl
+    jne .done            ; if not equal, jump
+    test al, al          ; check if al == 0
+    je .ret              ; both are '\0', strings equal
+    inc rcx              ; i++
     jmp .loop
 
-.diff:
-    movzx eax, al
-    movzx edx, dl       ; Usamos edx
-    sub eax, edx        ; Resultado: s1[i] - s2[i]
+.done:
+    sub al, bl           ; al = s1[i] - s2[i]
+    movsx rax, al        ; sign-extend byte result into rax
     ret
 
-.equal:
-    xor eax, eax
+.ret:
+    xor rax, rax         ; return 0
     ret
