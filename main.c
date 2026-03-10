@@ -5,6 +5,7 @@
 size_t	ft_strlen(const char *s); //Declaramos la funcion de assembly
 char	*ft_strcpy(char *dest, const char *src);
 int ft_strcmp(const char *s1, const char *s2);
+ssize_t ft_write(int fd, const void *buf, size_t count);
 
 int main()
 {
@@ -51,5 +52,24 @@ int main()
 	printf("\nPrefijo:\n");
 	printf("libc : %d\n", strcmp("hola", "holanda"));
 	printf("ft   : %d\n", ft_strcmp("hola", "holanda"));
-	return 0;
+
+	/*====== WRITE ======*/
+
+	printf("\n------WRITE------\n");
+
+	char *msg = "Hola desde write\n";
+
+	ssize_t libc_ret = write(1, msg, strlen(msg));
+	ssize_t ft_ret = ft_write(1, msg, strlen(msg));
+
+	printf("\nlibc write retorno: %zd\n", libc_ret);
+	printf("ft_write retorno  : %zd\n", ft_ret);
+
+	printf("\n------WRITE ERROR TEST------\n");
+
+	ssize_t libc_err = write(-1, msg, strlen(msg));
+	ssize_t ft_err = ft_write(-1, msg, strlen(msg));
+
+	printf("libc write error: %zd\n", libc_err);
+	printf("ft_write error : %zd\n", ft_err);
 }
