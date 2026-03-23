@@ -1,13 +1,14 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <string.h>
+# include <stdlib.h>
 
 size_t	ft_strlen(const char *s); //Declaramos la funcion de assembly
 char	*ft_strcpy(char *dest, const char *src);
 int		ft_strcmp(const char *s1, const char *s2);
 ssize_t	ft_write(int fd, const void *buf, size_t count);
 ssize_t	ft_read(int fd, void *buf, size_t count);
-char	*strdup(const char *s);
+char	*ft_strdup(const char *s);
 
 int main()
 {
@@ -98,4 +99,23 @@ int main()
 
 	printf("\nlibc buf: %s", buf1);
 	printf("ft   buf: %s\n", buf2);
+
+	printf("\n------STRDUP------\n");
+
+	char *original = "Hola mundo";
+	char *libc_dup = strdup(original);
+	char *ft_dup = ft_strdup(original);
+	if (!ft_dup)
+	{
+		free(libc_dup);
+		printf("me cooorrooo\n");
+		exit(1);
+	}
+
+	printf("original : %s\n", original);
+	printf("libc     : %s\n", libc_dup);
+	printf("ft       : %s\n", ft_dup);
+
+	free(libc_dup);
+	free(ft_dup);
 }
