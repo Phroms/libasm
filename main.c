@@ -4,8 +4,9 @@
 
 size_t	ft_strlen(const char *s); //Declaramos la funcion de assembly
 char	*ft_strcpy(char *dest, const char *src);
-int ft_strcmp(const char *s1, const char *s2);
-ssize_t ft_write(int fd, const void *buf, size_t count);
+int		ft_strcmp(const char *s1, const char *s2);
+ssize_t	ft_write(int fd, const void *buf, size_t count);
+ssize_t	ft_read(int fd, void *buf, size_t count);
 
 int main()
 {
@@ -72,4 +73,28 @@ int main()
 
 	printf("libc write error: %zd\n", libc_err);
 	printf("ft_write error : %zd\n", ft_err);
+
+	/*====== READ ======*/
+
+	printf("\n------READ------\n");
+
+	char buf1[100];
+	char buf2[100];
+
+	printf("\nEscribe algo (libc read):\n");
+	ssize_t libc_r = read(0, buf1, 20);
+
+	printf("\nEscribe algo (ft_read):\n");
+	ssize_t ft_r = ft_read(0, buf2, 20);
+
+	if (libc_r > 0)
+    	buf1[libc_r] = '\0';
+	if (ft_r > 0)
+    	buf2[ft_r] = '\0';
+
+	printf("\nlibc read retorno: %zd\n", libc_r);
+	printf("ft_read retorno  : %zd\n", ft_r);
+
+	printf("\nlibc buf: %s", buf1);
+	printf("ft   buf: %s\n", buf2);
 }
