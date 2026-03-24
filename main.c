@@ -12,17 +12,17 @@ char	*ft_strdup(const char *s);
 
 int main()
 {
-		printf("\n========== TEST LIBASM ==========\n\n");
+		printf("\n\033[92m========== TEST LIBASM ==========\033[0m\n");
 
 	/*======= STRLEN ======*/
 	const char *s = "HOLA COMO ESTAS";
 	//const char *str = "PAPAYA";
-	printf ("\n------STRLEN------\n");
+	printf ("\n\033[94m------STRLEN------\033[0m\n");
 	printf ("\nOriginal: %zu\n", strlen(s));
-	printf ("\nft      : %zu\n", ft_strlen(s));
+	printf ("ft      : %zu\n", ft_strlen(s));
 	
 	/*======= STRCPY ======*/
-	printf ("\n------STRCPY------\n");
+	printf ("\n\033[94m------STRCPY------\033[0m\n");
 	char dst1[100];
 	char dst2[100];
 
@@ -31,10 +31,10 @@ int main()
 
 	printf("src     : \"%s\"\n", s);
     printf("libc    : \"%s\"\n", dst1);
-    printf("ft      : \"%s\"\n\n", dst2);
+    printf("ft      : \"%s\"\n", dst2);
 
 	/*======= STRCMP ======*/
-	printf("\n------STRCMP------\n");
+	printf("\n\033[94m------STRCMP------\033[0m\n");
 
 	printf("\nIguales:\n");
 	printf("libc : %d\n", strcmp("hola", "hola"));
@@ -58,7 +58,7 @@ int main()
 
 	/*====== WRITE ======*/
 
-	printf("\n------WRITE------\n");
+	printf("\n\033[94m------WRITE------\033[0m\n");
 
 	char *msg = "Hola desde write\n";
 
@@ -68,7 +68,7 @@ int main()
 	printf("\nlibc write retorno: %zd\n", libc_ret);
 	printf("ft_write retorno  : %zd\n", ft_ret);
 
-	printf("\n------WRITE ERROR TEST------\n");
+	printf("\n\033[91m------WRITE ERROR TEST------\033[0m\n");
 
 	ssize_t libc_err = write(-1, msg, strlen(msg));
 	ssize_t ft_err = ft_write(-1, msg, strlen(msg));
@@ -78,7 +78,7 @@ int main()
 
 	/*====== READ ======*/
 
-	printf("\n------READ------\n");
+	printf("\n\033[94m------READ------\033[0m\n");
 
 	char buf1[100];
 	char buf2[100];
@@ -100,7 +100,7 @@ int main()
 	printf("\nlibc buf: %s", buf1);
 	printf("ft   buf: %s\n", buf2);
 
-	printf("\n------STRDUP------\n");
+	printf("\n\033[94m------STRDUP------\033[0m\n");
 
 	char *original = "Hola mundo";
 	char *libc_dup = strdup(original);
@@ -108,7 +108,7 @@ int main()
 	if (!ft_dup)
 	{
 		free(libc_dup);
-		printf("me cooorrooo\n");
+		printf("epaaaa\n");
 		exit(1);
 	}
 
